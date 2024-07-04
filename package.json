@@ -1,0 +1,14 @@
+{
+  "name": "gemini-cli",
+  "version": "1.0.0",
+  "description": "\"This is the personal cli for me\"",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "'Bishal Raj Parajuli'",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.14.1",
+    "dotenv": "^16.4.5"
+  }
+}
