@@ -2,13 +2,14 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config();
 const fs = require('fs');
 const { execSync } = require('child_process');
+const path = require('path');
 
 // Access command-line arguments
 const args = process.argv.slice(2);
 const userInput = args.join(' ');
 
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const genAI = new GoogleGenerativeAI('AIzaSyCDmuK20nddG8VNkco5TTfvhQhaTU_FMSo');
 
 async function run() {
   try {
@@ -32,18 +33,19 @@ async function run() {
 // Function to create or update the Markdown file
 function updateMarkdownFile(fileName, content) {
   try {
-    fs.writeFileSync(fileName, content, 'utf8');
+    const filePath = path.join(__dirname, fileName);
+    fs.writeFileSync(filePath, content, 'utf8');
     // Display the Markdown file using Glow
-    displayWithGlow(fileName);
+    displayWithGlow(filePath);
   } catch (error) {
     console.error("Error writing or reading the file:", error);
   }
 }
 
 // Function to display the Markdown file using Glow
-function displayWithGlow(fileName) {
+function displayWithGlow(filePath) {
   try {
-    execSync(`glow ${fileName}`, { stdio: 'inherit' });
+    execSync(`glow ${filePath}`, { stdio: 'inherit' });
   } catch (error) {
     console.error('Error displaying the file with Glow:', error);
   }
