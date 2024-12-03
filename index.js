@@ -9,7 +9,7 @@ const args = process.argv.slice(2);
 const userInput = args.join(' ');
 
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI('AIzaSyCDmuK20nddG8VNkco5TTfvhQhaTU_FMSo');
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 async function run() {
   try {
@@ -53,3 +53,5 @@ function displayWithGlow(filePath) {
 
 // Run the main function
 run();
+
+
