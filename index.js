@@ -11,8 +11,6 @@ config({ path: __dirname + "/.env" });
 const args = process.argv.slice(2);
 const userInput = args.join(" ");
 
-console.log(process.env.API_KEY);
-
 // Access your API key as an environment variable
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 // Loading spinner animation frames
