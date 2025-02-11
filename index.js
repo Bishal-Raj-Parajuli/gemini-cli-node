@@ -1,9 +1,17 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import "dotenv/config";
+import { config } from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+config({ path: __dirname + "/.env" });
 
 // Access command-line arguments
 const args = process.argv.slice(2);
 const userInput = args.join(" ");
+
+console.log(process.env.API_KEY);
 
 // Access your API key as an environment variable
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
